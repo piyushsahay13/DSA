@@ -6,6 +6,7 @@ result s1-s2 = min
 susbsituuting value 
 s1 -totalsum +s1 = totalsum -2s1;
 final result = totalsum-2s1
+ GFG https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 */
 
 //{ Driver Code Starts
