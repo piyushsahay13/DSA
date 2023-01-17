@@ -1,0 +1,43 @@
+/**
+ * Solution : The Idea is to use prioirty q and store head of each ll such whenever min head is popped out i can add next element linked to that head
+ * O(kLogN) Time Complexity
+ * O(n) Space Complexity
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode newHead = null;
+        ListNode temp = null;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+            public int compare(ListNode ln1, ListNode ln2){
+                return ln1.val - ln2.val;
+            }
+        });
+        for(int i=0;i<lists.length;i++){
+            if(lists[i] != null){
+                pq.add(lists[i]);
+            }
+        }
+        while(!pq.isEmpty()){
+            ListNode curr = pq.poll();
+            if(curr.next != null){
+                pq.add(curr.next);
+            }
+            if(newHead == null){
+                newHead = curr;
+                temp = newHead;
+            }else{
+                temp.next = curr;
+                temp = temp.next;
+            }
+        }
+        return newHead;
+    }
+}
